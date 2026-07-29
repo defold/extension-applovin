@@ -12,22 +12,20 @@ Version 2.0.0 uses AppLovin MAX 13.6.3 and requires:
 
 ## Install
 
-Add the release archive to `game.project`:
+Open `game.project` in the Defold editor and select **Project** in the left
+sidebar. Under **Dependencies**, click **+** and paste:
 
-```ini
-[project]
-bundle_resources = /extension-applovin/res/ios
-dependencies#0 = https://github.com/defold/AppLovin-MAX-Defold/archive/refs/tags/2.0.0.zip
-
-[android]
-minimum_sdk_version = 24
-
-[applovin]
-ios_user_tracking_usage_description = This app uses device information to provide more relevant ads and content.
+```text
+https://github.com/defold/AppLovin-MAX-Defold/archive/refs/tags/2.0.0.zip
 ```
 
-Use the next free `dependencies#N` entry if your project already has
-dependencies, then select **Project > Fetch Libraries** in Defold.
+Then select **Project > Fetch Libraries** from the main menu.
+
+In the `game.project` editor, also configure:
+
+- **Android > Minimum SDK Version**: `24`
+- **AppLovin > iOS User Tracking Usage Description**: a message explaining
+  why your app requests permission to use device information for advertising
 
 ## Initialize
 

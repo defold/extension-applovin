@@ -1,11 +1,16 @@
+---
+title: AppLovin MAX extension for Defold
+brief: Install and use AppLovin MAX ad mediation on Android and iOS.
+---
+
 # AppLovin MAX for Defold
 
 This guide covers installation, initialization, ad formats, privacy, testing,
-and mediated networks. The complete Lua API is documented in
-[`applovin.script_api`](../extension-applovin/api/applovin.script_api).
+and mediated networks. The complete Lua API is documented in the
+[API reference](https://defold.com/extension-applovin/applovin_api).
 
 If you are upgrading from 1.x, start with the
-[migration guide](../MIGRATION.md).
+[migration guide](https://github.com/defold/extension-applovin/blob/master/MIGRATION.md).
 
 ## Requirements
 
@@ -22,7 +27,7 @@ Open `game.project` in the Defold editor and select **Project** in the left
 sidebar. Under **Dependencies**, click **+** and paste:
 
 ```text
-https://github.com/defold/AppLovin-MAX-Defold/archive/refs/tags/2.0.0.zip
+https://github.com/defold/extension-applovin/archive/refs/tags/2.0.0.zip
 ```
 
 Then select **Project > Fetch Libraries** from the main menu.
@@ -246,8 +251,8 @@ function(self, event_name, params)
 ```
 
 Callbacks run from the Defold update thread. Keep them short. The complete
-event and constant list is in
-[`applovin.script_api`](../extension-applovin/api/applovin.script_api).
+event and constant list is in the
+[API reference](https://defold.com/extension-applovin/applovin_api).
 
 Ad payloads can include:
 
@@ -275,7 +280,7 @@ meta_ios = 1
 
 Android and iOS switches are independent. Available property names and pinned
 versions are listed in
-[`updater/adapters.json`](../updater/adapters.json).
+[`updater/adapters.json`](https://github.com/defold/extension-applovin/blob/master/updater/adapters.json).
 
 Google also requires an application ID:
 
@@ -329,4 +334,4 @@ The repository example includes a demo SDK key:
   message, and the debugger's CMP section.
 
 For repository builds and releases, see
-[DEVELOPMENT.md](../DEVELOPMENT.md).
+[DEVELOPMENT.md](https://github.com/defold/extension-applovin/blob/master/DEVELOPMENT.md).

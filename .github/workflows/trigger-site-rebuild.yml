@@ -1,0 +1,19 @@
+name: Rebuild AppLovin documentation
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch: {}
+
+jobs:
+  site-rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch documentation rebuild
+        uses: defold/repository-dispatch@1.2.1
+        with:
+          repo: defold/defold.github.io
+          token: ${{ secrets.SERVICES_GITHUB_TOKEN }}
+          user: services@defold.se
+          action: extension-applovin

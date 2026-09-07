@@ -33,9 +33,9 @@ jobs:
       matrix:
         include:
           - name: current
-            bob_url: https://github.com/defold/defold/releases/download/1.13.1-beta/bob.jar
-            bob_sha256: b3036943f78ec977f3b3fad54ea7117bfe9eb61a59621cd387fe520fa2934282
-            build_server: https://build-stage.defold.com
+            bob_url: https://github.com/defold/defold/releases/download/1.13.1/bob.jar
+            bob_sha256: 8f2b1381fd4d0fb92816403cd0056cb7db5ad4083615be8dcc2d868fb4939938
+            build_server: https://build.defold.com
           - name: Defold-1.13.0-minimum
             bob_url: https://github.com/defold/defold/releases/download/1.13.0/bob.jar
             bob_sha256: 22e651025834603794ba6873b09924f11412dff66eee0e38aaef8955eb534655
@@ -88,9 +88,9 @@ jobs:
     needs: verify
     runs-on: macos-latest
     env:
-      BOB_JAR_URL: https://github.com/defold/defold/releases/download/1.13.1-beta/bob.jar
-      BOB_JAR_SHA256: b3036943f78ec977f3b3fad54ea7117bfe9eb61a59621cd387fe520fa2934282
-      BUILD_SERVER: https://build-stage.defold.com
+      BOB_JAR_URL: https://github.com/defold/defold/releases/download/1.13.1/bob.jar
+      BOB_JAR_SHA256: 8f2b1381fd4d0fb92816403cd0056cb7db5ad4083615be8dcc2d868fb4939938
+      BUILD_SERVER: https://build.defold.com
     steps:
       # The upstream reusable workflow exposes neither a Bob checksum input
       # nor bundle artifacts, so the security- and artifact-sensitive mobile

@@ -660,7 +660,7 @@ class PackagingContractTests(unittest.TestCase):
         self.assertIn("unittest discover -s tests -v", workflow)
         self.assertIn("needs: verify", workflow)
         self.assertIn(
-            "b3036943f78ec977f3b3fad54ea7117bfe9eb61a59621cd387fe520fa2934282",
+            "8f2b1381fd4d0fb92816403cd0056cb7db5ad4083615be8dcc2d868fb4939938",
             workflow,
         )
         self.assertIn(
@@ -668,7 +668,7 @@ class PackagingContractTests(unittest.TestCase):
             workflow,
         )
         self.assertIn("https://build.defold.com", workflow)
-        self.assertIn("https://build-stage.defold.com", workflow)
+        self.assertNotIn("https://build-stage.defold.com", workflow)
         self.assertIn("sha256sum -c -", workflow)
         self.assertIn("shasum -a 256 -c -", workflow)
         self.assertIn("--platform=armv7-android", workflow)

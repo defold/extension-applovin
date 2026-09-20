@@ -167,6 +167,16 @@ bool HasSupportedCmp()
     return [g_IosPlugin hasSupportedCMP];
 }
 
+UmpDmaParameters GetUmpDmaParameters()
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    id additionalConsent = [defaults objectForKey:@"IABTCF_AddtlConsent"];
+    id purposeConsents = [defaults objectForKey:@"IABTCF_PurposeConsents"];
+    return ParseUmpDmaParameters(
+        [additionalConsent isKindOfClass:[NSString class]] ? [additionalConsent UTF8String] : 0,
+        [purposeConsents isKindOfClass:[NSString class]] ? [purposeConsents UTF8String] : 0);
+}
+
 bool IsTablet()
 {
     return [g_IosPlugin isTablet];

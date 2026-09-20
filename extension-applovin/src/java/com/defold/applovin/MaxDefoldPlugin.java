@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -1087,6 +1088,25 @@ public class MaxDefoldPlugin
             public Boolean call(final Activity ignored)
             {
                 return state == State.READY && sdk != null && sdk.getCmpService().hasSupportedCmp();
+            }
+        } );
+    }
+
+    public String[] getUmpConsentStrings()
+    {
+        return callOnUiThread( "read UMP consent parameters", new String[] { "", "" }, new ActivityCallable<String[]>()
+        {
+            @Override
+            public String[] call(final Activity activity)
+            {
+                final Map<String, ?> preferences = PreferenceManager
+                        .getDefaultSharedPreferences( activity.getApplicationContext() ).getAll();
+                final Object additionalConsent = preferences.get( "IABTCF_AddtlConsent" );
+                final Object purposeConsents = preferences.get( "IABTCF_PurposeConsents" );
+                return new String[] {
+                        additionalConsent instanceof String ? (String) additionalConsent : "",
+                        purposeConsents instanceof String ? (String) purposeConsents : ""
+                };
             }
         } );
     }

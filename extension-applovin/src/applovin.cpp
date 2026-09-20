@@ -118,6 +118,21 @@ static int Lua_HasSupportedCmp(lua_State* L)
     return 1;
 }
 
+static int Lua_GetUmpDmaParameters(lua_State* L)
+{
+    DM_LUA_STACK_CHECK(L, 1);
+    const UmpDmaParameters parameters = GetUmpDmaParameters();
+
+    lua_createtable(L, 0, 3);
+    lua_pushboolean(L, parameters.m_AdPersonalization);
+    lua_setfield(L, -2, "adPersonalization");
+    lua_pushboolean(L, parameters.m_AdUserData);
+    lua_setfield(L, -2, "adUserData");
+    lua_pushboolean(L, parameters.m_AdjustConsent);
+    lua_setfield(L, -2, "adjustConsent");
+    return 1;
+}
+
 static int Lua_IsTablet(lua_State* L)
 {
     DM_LUA_STACK_CHECK(L, 1);
@@ -482,6 +497,7 @@ static const luaL_reg Module_methods[] =
     {"set_consent_flow_debug_user_geography", Lua_SetConsentFlowDebugUserGeography},
     {"show_cmp_for_existing_user", Lua_ShowCmpForExistingUser},
     {"has_supported_cmp", Lua_HasSupportedCmp},
+    {"get_ump_dma_parameters", Lua_GetUmpDmaParameters},
     {"is_tablet", Lua_IsTablet},
     {"set_user_id", Lua_SetUserId},
     {"set_muted", Lua_SetMuted},

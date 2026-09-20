@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "utils/UmpDmaParameters.h"
+
 namespace dmAppLovin {
 
 void Initialize_Ext(const char* engineVersion, const char* extensionVersion);
@@ -33,6 +35,8 @@ void SetConsentFlowDebugUserGeography(const char* userGeographyString);
 void ShowCmpForExistingUser();
 
 bool HasSupportedCmp();
+
+UmpDmaParameters GetUmpDmaParameters();
 
 bool IsTablet();
 

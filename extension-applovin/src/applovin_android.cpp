@@ -302,6 +302,7 @@ struct AppLovin
     jmethodID m_SetConsentFlowDebugUserGeography;
     jmethodID m_ShowCmpForExistingUser;
     jmethodID m_HasSupportedCmp;
+    jmethodID m_GetUmpConsentStrings;
     jmethodID m_IsTablet;
     jmethodID m_SetUserId;
     jmethodID m_SetMuted;
@@ -520,6 +521,7 @@ static void InitJNIMethods(JNIEnv* env, jclass cls)
     g_applovin.m_SetConsentFlowDebugUserGeography = env->GetMethodID(cls, "setConsentFlowDebugUserGeography", "(Ljava/lang/String;)V");
     g_applovin.m_ShowCmpForExistingUser = env->GetMethodID(cls, "showCmpForExistingUser", "()V");
     g_applovin.m_HasSupportedCmp = env->GetMethodID(cls, "hasSupportedCmp", "()Z");
+    g_applovin.m_GetUmpConsentStrings = env->GetMethodID(cls, "getUmpConsentStrings", "()[Ljava/lang/String;");
     g_applovin.m_IsTablet = env->GetMethodID(cls, "isTablet", "()Z");
     g_applovin.m_SetUserId = env->GetMethodID(cls, "setUserId", "(Ljava/lang/String;)V");
     g_applovin.m_SetMuted = env->GetMethodID(cls, "setMuted", "(Z)V");
@@ -674,6 +676,61 @@ void ShowCmpForExistingUser()
 bool HasSupportedCmp()
 {
     return CallBoolMethod(g_applovin.m_MaxDefoldPlugin, g_applovin.m_HasSupportedCmp);
+}
+
+UmpDmaParameters GetUmpDmaParameters()
+{
+    UmpDmaParameters parameters = { false, false, false };
+    if (!g_applovin.m_MaxDefoldPlugin || !g_applovin.m_GetUmpConsentStrings)
+    {
+        return parameters;
+    }
+
+    dmAndroid::ThreadAttacher threadAttacher;
+    JNIEnv* env = threadAttacher.GetEnv();
+    jobjectArray values = (jobjectArray)env->CallObjectMethod(
+        g_applovin.m_MaxDefoldPlugin, g_applovin.m_GetUmpConsentStrings);
+    char* strings[2] = { 0, 0 };
+    if (!env->ExceptionCheck() && values && env->GetArrayLength(values) == 2)
+    {
+        bool valid = true;
+        for (int i = 0; i < 2; ++i)
+        {
+            jstring value = (jstring)env->GetObjectArrayElement(values, i);
+            if (env->ExceptionCheck())
+            {
+                valid = false;
+            }
+            else if (value && !JStringToUtf8(env, value, &strings[i]))
+            {
+                valid = false;
+            }
+            if (value)
+            {
+                env->DeleteLocalRef(value);
+            }
+            if (!valid)
+            {
+                break;
+            }
+        }
+        if (valid)
+        {
+            parameters = ParseUmpDmaParameters(strings[0], strings[1]);
+        }
+    }
+    free(strings[0]);
+    free(strings[1]);
+    if (values)
+    {
+        env->DeleteLocalRef(values);
+    }
+    if (env->ExceptionCheck())
+    {
+        env->ExceptionClear();
+        dmLogError("Unable to read UMP consent parameters.");
+    }
+    return parameters;
 }
 
 bool IsTablet()

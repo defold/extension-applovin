@@ -131,6 +131,34 @@ After initialization, `has_supported_cmp()` tells you whether
 `show_cmp_for_existing_user()` can present a **Manage privacy settings**
 screen. Completion is reported through `OnCmpCompletedEvent`.
 
+### Read UMP DMA parameters
+
+After the consent flow completes, read the current stored parameters on Android
+or iOS:
+
+```lua
+local parameters = applovin.get_ump_dma_parameters()
+-- parameters.adPersonalization: boolean
+-- parameters.adUserData: boolean
+-- parameters.adjustConsent: boolean
+```
+
+The function reads `IABTCF_AddtlConsent` and `IABTCF_PurposeConsents` from
+Android's default shared preferences or iOS's standard user defaults:
+
+- `adjustConsent` is true when Adjust's ATP ID `2822` is in the Additional
+  Consent consented-provider list. A disclosed provider alone does not count.
+- `adUserData` requires Adjust consent and TCF purpose 1.
+- `adPersonalization` requires Adjust consent and TCF purposes 1, 2, and 4.
+
+Missing or unreadable values default to false. Without Adjust consent, all
+three fields are false. These are the Adjust-specific DMA parameters, not a
+general replacement for `has_user_consent()` or a signal that ads can load.
+Call again after consent changes, such as a successful `OnCmpCompletedEvent`.
+The function reads stored values; it does not show a form or forward consent
+to another SDK. Additional Consent parsing follows Google's
+[format specification](https://support.google.com/admob/answer/9681920?hl=en).
+
 ### Store requirements
 
 Review the final application—not only the base extension—for permissions,

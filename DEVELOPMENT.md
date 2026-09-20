@@ -9,6 +9,7 @@ This document is for extension maintainers. Extension users should read the
 - a compatible `bob.jar` in the repository root
 - Java supported by that Bob release
 - Python 3
+- a C++ compiler (`c++`) for the UMP consent parser tests
 - Android SDK platform tools
 - Xcode and signing assets for iOS device testing
 
@@ -27,7 +28,7 @@ git diff --check
 ```
 
 The tests cover generated packaging, dependency pins, public Lua bindings,
-callback names, resources, and the example configuration.
+callback names, resources, the example configuration, and UMP consent parsing.
 
 ## Update dependencies
 

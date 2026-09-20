@@ -72,7 +72,8 @@ SKADNETWORK_ADAPTER_KEYS = {
     "tencent": None,
     "unity_ads": "unityads",
     "verve": "verve",
-    "vk": "mytarget",
+    # MAX 13.6.4 removed MyTarget detection; the ID service rejects this key.
+    "vk": None,
     "yandex": "yandex",
     "yso": "yso-network",
 }

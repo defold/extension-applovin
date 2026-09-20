@@ -411,9 +411,6 @@
             <dict><key>SKAdNetworkIdentifier</key><string>nu4557a4je.skadnetwork</string></dict>
             <dict><key>SKAdNetworkIdentifier</key><string>z959bm4gru.skadnetwork</string></dict>
 {{/applovin.verve_ios}}
-{{#applovin.vk_ios}}
-            <dict><key>SKAdNetworkIdentifier</key><string>r26jy69rpl.skadnetwork</string></dict>
-{{/applovin.vk_ios}}
 {{#applovin.yandex_ios}}
             <dict><key>SKAdNetworkIdentifier</key><string>2q884k2j68.skadnetwork</string></dict>
             <dict><key>SKAdNetworkIdentifier</key><string>2rq3zucswp.skadnetwork</string></dict>

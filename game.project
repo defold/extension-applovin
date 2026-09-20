@@ -22,6 +22,7 @@ defold_min_version = 1.13.0
 package = com.defold.applovin.demo
 minimum_sdk_version = 24
 target_sdk_version = 36
+r8_keep_rules = /builtins/manifests/android/dmengine.keep
 
 [ios]
 bundle_identifier = com.defold.applovin.demo
@@ -29,5 +30,3 @@ bundle_identifier = com.defold.applovin.demo
 [applovin]
 demo_sdk_key = 05TMDQ5tZabpXQ45_UTbmEGNUtVAzSTzT6KmWQc5_CuWdzccS4DCITZoL3yIWUG3bbq60QC_d4WF28tUC4gVTF
 ios_user_tracking_usage_description = This app uses device information to provide more relevant ads and content.
-unity_ads_android = 1
-unity_ads_ios = 1

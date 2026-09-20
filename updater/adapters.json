@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "catalog_version": "2026-07-29",
+  "catalog_version": "2026-09-20",
   "sources": {
     "defold_mediated_networks": "https://support.applovin.com/en/max/defold/preparing-mediated-networks",
     "android_adapters": "https://github.com/AppLovin/AppLovin-MAX-SDK-Android",
@@ -13,30 +13,30 @@
     "networks": {
       "amazon": {
         "display_name": "Amazon Publisher Services",
-        "coordinate": "com.applovin.mediation:amazon-tam-adapter:11.3.1.0",
+        "coordinate": "com.applovin.mediation:amazon-tam-adapter:12.0.2.0",
         "extra_dependencies": [
-          "com.amazon.android:aps-sdk:11.3.1"
+          "com.amazon.android:aps-sdk:12.0.2"
         ]
       },
       "bidmachine": {
         "display_name": "BidMachine",
-        "coordinate": "com.applovin.mediation:bidmachine-adapter:3.7.1.0",
+        "coordinate": "com.applovin.mediation:bidmachine-adapter:3.8.0.0",
         "repositories": [
           "https://artifactory.bidmachine.io/bidmachine"
         ]
       },
       "bigo": {
         "display_name": "BIGO Ads",
-        "coordinate": "com.applovin.mediation:bigoads-adapter:5.10.1.0"
+        "coordinate": "com.applovin.mediation:bigoads-adapter:6.1.0.0"
       },
       "chartboost": {
         "display_name": "Chartboost",
-        "coordinate": "com.applovin.mediation:chartboost-adapter:9.13.0.0",
+        "coordinate": "com.applovin.mediation:chartboost-adapter:9.14.1.1",
         "repositories": [
           "https://cboost.jfrog.io/artifactory/chartboost-ads/"
         ],
         "extra_dependencies": [
-          "com.google.android.gms:play-services-base:16.1.0"
+          "com.google.android.gms:play-services-base:18.11.0"
         ]
       },
       "dt_exchange": {
@@ -45,11 +45,11 @@
       },
       "google_ad_manager": {
         "display_name": "Google Ad Manager",
-        "coordinate": "com.applovin.mediation:google-ad-manager-adapter:25.4.0.0"
+        "coordinate": "com.applovin.mediation:google-ad-manager-adapter:25.5.0.0"
       },
       "google": {
         "display_name": "Google Bidding and Google AdMob",
-        "coordinate": "com.applovin.mediation:google-adapter:25.4.0.0"
+        "coordinate": "com.applovin.mediation:google-adapter:25.5.0.0"
       },
       "hyprmx": {
         "display_name": "HyprMX",
@@ -57,19 +57,19 @@
       },
       "inmobi": {
         "display_name": "InMobi",
-        "coordinate": "com.applovin.mediation:inmobi-adapter:11.4.0.0",
+        "coordinate": "com.applovin.mediation:inmobi-adapter:11.4.1.3",
         "extra_dependencies": [
           "com.squareup.picasso:picasso:2.8",
-          "androidx.recyclerview:recyclerview:1.1.0"
+          "androidx.recyclerview:recyclerview:1.4.0"
         ]
       },
       "ironsource": {
         "display_name": "ironSource",
-        "coordinate": "com.applovin.mediation:ironsource-adapter:9.5.0.0.0"
+        "coordinate": "com.applovin.mediation:ironsource-adapter:9.6.0.0.0"
       },
       "liftoff": {
         "display_name": "Liftoff Monetize",
-        "coordinate": "com.applovin.mediation:vungle-adapter:7.7.7.1"
+        "coordinate": "com.applovin.mediation:vungle-adapter:7.7.8.1"
       },
       "line": {
         "display_name": "LINE",
@@ -84,58 +84,58 @@
       },
       "meta": {
         "display_name": "Meta Audience Network",
-        "coordinate": "com.applovin.mediation:facebook-adapter:6.21.0.0"
+        "coordinate": "com.applovin.mediation:facebook-adapter:6.22.0.0"
       },
       "mintegral": {
         "display_name": "Mintegral",
-        "coordinate": "com.applovin.mediation:mintegral-adapter:17.1.71.0",
+        "coordinate": "com.applovin.mediation:mintegral-adapter:17.1.81.0",
         "repositories": [
           "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea"
         ]
       },
       "mobilefuse": {
         "display_name": "MobileFuse",
-        "coordinate": "com.applovin.mediation:mobilefuse-adapter:1.11.0.0"
+        "coordinate": "com.applovin.mediation:mobilefuse-adapter:1.12.0.0"
       },
       "moloco": {
         "display_name": "Moloco",
-        "coordinate": "com.applovin.mediation:moloco-adapter:4.11.0.0"
+        "coordinate": "com.applovin.mediation:moloco-adapter:4.12.0.0"
       },
       "ogury": {
         "display_name": "Ogury",
-        "coordinate": "com.applovin.mediation:ogury-presage-adapter:6.2.2.0",
+        "coordinate": "com.applovin.mediation:ogury-presage-adapter:6.3.1.0",
         "repositories": [
           "https://maven.ogury.co"
         ]
       },
       "pangle": {
         "display_name": "Pangle",
-        "coordinate": "com.applovin.mediation:bytedance-adapter:8.2.0.4.0",
+        "coordinate": "com.applovin.mediation:bytedance-adapter:8.3.0.4.1",
         "repositories": [
           "https://artifact.bytedance.com/repository/pangle"
         ]
       },
       "pubmatic": {
         "display_name": "PubMatic",
-        "coordinate": "com.applovin.mediation:pubmatic-adapter:5.2.0.0",
+        "coordinate": "com.applovin.mediation:pubmatic-adapter:5.4.0.0",
         "repositories": [
           "https://repo.pubmatic.com/artifactory/public-repos"
         ]
       },
       "smaato": {
         "display_name": "Smaato",
-        "coordinate": "com.applovin.mediation:smaato-adapter:23.2.0.0",
+        "coordinate": "com.applovin.mediation:smaato-adapter:23.2.2.0",
         "repositories": [
           "https://s3.amazonaws.com/smaato-sdk-releases/"
         ]
       },
       "unity_ads": {
         "display_name": "Unity Ads",
-        "coordinate": "com.applovin.mediation:unityads-adapter:4.19.0.1"
+        "coordinate": "com.applovin.mediation:unityads-adapter:4.20.1.0"
       },
       "verve": {
         "display_name": "Verve",
-        "coordinate": "com.applovin.mediation:verve-adapter:3.9.0.1",
+        "coordinate": "com.applovin.mediation:verve-adapter:3.9.2.0",
         "repositories": [
           "https://verve.jfrog.io/artifactory/verve-gradle-release"
         ]
@@ -146,7 +146,7 @@
       },
       "yandex": {
         "display_name": "Yandex",
-        "coordinate": "com.applovin.mediation:yandex-adapter:8.2.0.1"
+        "coordinate": "com.applovin.mediation:yandex-adapter:8.5.0.0"
       },
       "yso": {
         "display_name": "YSO Network",
@@ -162,11 +162,11 @@
       "amazon": {
         "display_name": "Amazon Publisher Services",
         "pod": "AppLovinMediationAmazonAdMarketplaceAdapter",
-        "version": "5.6.4.0",
+        "version": "5.6.5.0",
         "extra_pods": [
           {
             "pod": "AmazonPublisherServicesSDK",
-            "version": "5.6.4"
+            "version": "5.6.5"
           }
         ],
         "skadnetwork_key": "amazon-ad-marketplace",
@@ -183,7 +183,7 @@
       "bidmachine": {
         "display_name": "BidMachine",
         "pod": "AppLovinMediationBidMachineAdapter",
-        "version": "3.7.1.0.0",
+        "version": "3.8.0.0.1",
         "skadnetwork_key": "bidmachine",
         "skadnetwork_ids": [
           "23zd986j2c.skadnetwork",
@@ -314,7 +314,7 @@
       "chartboost": {
         "display_name": "Chartboost",
         "pod": "AppLovinMediationChartboostAdapter",
-        "version": "9.13.0.0",
+        "version": "9.14.1.0",
         "skadnetwork_key": "chartboost",
         "skadnetwork_ids": [
           "55644vm79v.skadnetwork",
@@ -362,7 +362,7 @@
       "dt_exchange": {
         "display_name": "DT Exchange",
         "pod": "AppLovinMediationFyberAdapter",
-        "version": "8.4.9.0",
+        "version": "8.5.0.0",
         "skadnetwork_key": "fyber",
         "skadnetwork_ids": [
           "9g2aggbj52.skadnetwork",
@@ -374,14 +374,14 @@
       "google_ad_manager": {
         "display_name": "Google Ad Manager",
         "pod": "AppLovinMediationGoogleAdManagerAdapter",
-        "version": "13.7.0.0",
+        "version": "13.10.0.0",
         "skadnetwork_key": "google-ad-manager",
         "skadnetwork_ids": []
       },
       "google": {
         "display_name": "Google Bidding and Google AdMob",
         "pod": "AppLovinMediationGoogleAdapter",
-        "version": "13.7.0.0",
+        "version": "13.10.0.0",
         "skadnetwork_key": "google",
         "skadnetwork_ids": []
       },
@@ -397,7 +397,7 @@
       "inmobi": {
         "display_name": "InMobi",
         "pod": "AppLovinMediationInMobiAdapter",
-        "version": "11.4.0.0",
+        "version": "11.4.1.3",
         "skadnetwork_key": "inmobi",
         "skadnetwork_ids": [
           "55644vm79v.skadnetwork",
@@ -415,14 +415,14 @@
       "ironsource": {
         "display_name": "ironSource",
         "pod": "AppLovinMediationIronSourceAdapter",
-        "version": "9.5.0.0.0",
+        "version": "9.6.0.0.1",
         "skadnetwork_key": "ironsource",
         "skadnetwork_ids": []
       },
       "liftoff": {
         "display_name": "Liftoff Monetize",
         "pod": "AppLovinMediationVungleAdapter",
-        "version": "7.7.6.1",
+        "version": "7.7.7.1",
         "skadnetwork_key": "vungle",
         "skadnetwork_ids": [
           "6rd35atwn8.skadnetwork",
@@ -447,7 +447,7 @@
       "line": {
         "display_name": "LINE",
         "pod": "AppLovinMediationLineAdapter",
-        "version": "3.0.1.0",
+        "version": "3.1.1.1",
         "skadnetwork_key": "line",
         "skadnetwork_ids": []
       },
@@ -461,14 +461,14 @@
       "meta": {
         "display_name": "Meta Audience Network",
         "pod": "AppLovinMediationFacebookAdapter",
-        "version": "6.21.1.0",
+        "version": "6.22.0.3",
         "skadnetwork_key": "facebook",
         "skadnetwork_ids": []
       },
       "mintegral": {
         "display_name": "Mintegral",
         "pod": "AppLovinMediationMintegralAdapter",
-        "version": "8.1.5.0.0",
+        "version": "8.1.7.0.1",
         "skadnetwork_key": "mintegral",
         "skadnetwork_ids": [
           "ns5j362hk7.skadnetwork"
@@ -477,7 +477,7 @@
       "mobilefuse": {
         "display_name": "MobileFuse",
         "pod": "AppLovinMediationMobileFuseAdapter",
-        "version": "1.11.1.0",
+        "version": "1.12.0.1",
         "skadnetwork_key": "mobilefuse",
         "skadnetwork_ids": [
           "hjevpa356n.skadnetwork"
@@ -486,14 +486,14 @@
       "moloco": {
         "display_name": "Moloco",
         "pod": "AppLovinMediationMolocoAdapter",
-        "version": "4.9.0.0",
+        "version": "4.10.0.1",
         "skadnetwork_key": "moloco",
         "skadnetwork_ids": []
       },
       "ogury": {
         "display_name": "Ogury",
         "pod": "AppLovinMediationOguryPresageAdapter",
-        "version": "5.2.3.0",
+        "version": "5.3.1.0",
         "skadnetwork_key": "ogury-presage",
         "skadnetwork_ids": [
           "w7jznl3r6g.skadnetwork"
@@ -502,21 +502,21 @@
       "pangle": {
         "display_name": "Pangle",
         "pod": "AppLovinMediationByteDanceAdapter",
-        "version": "8.2.0.7.0",
+        "version": "8.3.0.7.0",
         "skadnetwork_key": "tiktok",
         "skadnetwork_ids": []
       },
       "pubmatic": {
         "display_name": "PubMatic",
         "pod": "AppLovinMediationPubMaticAdapter",
-        "version": "5.2.0.0",
+        "version": "5.4.0.1",
         "skadnetwork_key": "pubmatic",
         "skadnetwork_ids": []
       },
       "smaato": {
         "display_name": "Smaato",
         "pod": "AppLovinMediationSmaatoAdapter",
-        "version": "23.2.0.0",
+        "version": "23.2.2.0",
         "skadnetwork_key": "smaato",
         "skadnetwork_ids": [
           "577p5t736z.skadnetwork",
@@ -559,7 +559,7 @@
       "unity_ads": {
         "display_name": "Unity Ads",
         "pod": "AppLovinMediationUnityAdsAdapter",
-        "version": "4.19.0.1",
+        "version": "4.20.1.0",
         "skadnetwork_key": "unityads",
         "skadnetwork_ids": [
           "5f5u5tfb26.skadnetwork",
@@ -571,7 +571,7 @@
       "verve": {
         "display_name": "Verve",
         "pod": "AppLovinMediationVerveAdapter",
-        "version": "3.9.0.0",
+        "version": "3.9.2.0",
         "skadnetwork_key": "verve",
         "skadnetwork_ids": [
           "ln5gz23vtd.skadnetwork",
@@ -583,15 +583,13 @@
         "display_name": "VK Ad Network",
         "pod": "AppLovinMediationMyTargetAdapter",
         "version": "5.45.0.0",
-        "skadnetwork_key": "mytarget",
-        "skadnetwork_ids": [
-          "r26jy69rpl.skadnetwork"
-        ]
+        "skadnetwork_key": null,
+        "skadnetwork_ids": []
       },
       "yandex": {
         "display_name": "Yandex",
         "pod": "AppLovinMediationYandexAdapter",
-        "version": "8.3.0.0",
+        "version": "8.5.0.1",
         "skadnetwork_key": "yandex",
         "skadnetwork_ids": [
           "2q884k2j68.skadnetwork",

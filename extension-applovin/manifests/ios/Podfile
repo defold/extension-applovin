@@ -8,17 +8,17 @@ source 'https://cdn.cocoapods.org/'
 platform :ios, '12.0'
 inhibit_all_warnings!
 
-pod 'AppLovinSDK', '13.6.3'
+pod 'AppLovinSDK', '13.6.4'
 
 {{#applovin.amazon_ios}}
 # Amazon Publisher Services
-pod 'AmazonPublisherServicesSDK', '5.6.4'
-pod 'AppLovinMediationAmazonAdMarketplaceAdapter', '5.6.4.0'
+pod 'AmazonPublisherServicesSDK', '5.6.5'
+pod 'AppLovinMediationAmazonAdMarketplaceAdapter', '5.6.5.0'
 {{/applovin.amazon_ios}}
 
 {{#applovin.bidmachine_ios}}
 # BidMachine
-pod 'AppLovinMediationBidMachineAdapter', '3.7.1.0.0'
+pod 'AppLovinMediationBidMachineAdapter', '3.8.0.0.1'
 {{/applovin.bidmachine_ios}}
 
 {{#applovin.bigo_ios}}
@@ -28,7 +28,7 @@ pod 'AppLovinMediationBigoAdsAdapter', '5.3.0.0'
 
 {{#applovin.chartboost_ios}}
 # Chartboost
-pod 'AppLovinMediationChartboostAdapter', '9.13.0.0'
+pod 'AppLovinMediationChartboostAdapter', '9.14.1.0'
 {{/applovin.chartboost_ios}}
 
 {{#applovin.csj_ios}}
@@ -38,17 +38,17 @@ pod 'AppLovinMediationCSJAdapter', '6.7.1.6.0'
 
 {{#applovin.dt_exchange_ios}}
 # DT Exchange
-pod 'AppLovinMediationFyberAdapter', '8.4.9.0'
+pod 'AppLovinMediationFyberAdapter', '8.5.0.0'
 {{/applovin.dt_exchange_ios}}
 
 {{#applovin.google_ios}}
 # Google Bidding and Google AdMob
-pod 'AppLovinMediationGoogleAdapter', '13.7.0.0'
+pod 'AppLovinMediationGoogleAdapter', '13.10.0.0'
 {{/applovin.google_ios}}
 
 {{#applovin.google_ad_manager_ios}}
 # Google Ad Manager
-pod 'AppLovinMediationGoogleAdManagerAdapter', '13.7.0.0'
+pod 'AppLovinMediationGoogleAdManagerAdapter', '13.10.0.0'
 {{/applovin.google_ad_manager_ios}}
 
 {{#applovin.hyprmx_ios}}
@@ -58,22 +58,22 @@ pod 'AppLovinMediationHyprMXAdapter', '6.4.2.0.0'
 
 {{#applovin.inmobi_ios}}
 # InMobi
-pod 'AppLovinMediationInMobiAdapter', '11.4.0.0'
+pod 'AppLovinMediationInMobiAdapter', '11.4.1.3'
 {{/applovin.inmobi_ios}}
 
 {{#applovin.ironsource_ios}}
 # ironSource
-pod 'AppLovinMediationIronSourceAdapter', '9.5.0.0.0'
+pod 'AppLovinMediationIronSourceAdapter', '9.6.0.0.1'
 {{/applovin.ironsource_ios}}
 
 {{#applovin.liftoff_ios}}
 # Liftoff Monetize
-pod 'AppLovinMediationVungleAdapter', '7.7.6.1'
+pod 'AppLovinMediationVungleAdapter', '7.7.7.1'
 {{/applovin.liftoff_ios}}
 
 {{#applovin.line_ios}}
 # LINE
-pod 'AppLovinMediationLineAdapter', '3.0.1.0'
+pod 'AppLovinMediationLineAdapter', '3.1.1.1'
 {{/applovin.line_ios}}
 
 {{#applovin.maio_ios}}
@@ -83,42 +83,42 @@ pod 'AppLovinMediationMaioAdapter', '2.1.6.0'
 
 {{#applovin.meta_ios}}
 # Meta Audience Network
-pod 'AppLovinMediationFacebookAdapter', '6.21.1.0'
+pod 'AppLovinMediationFacebookAdapter', '6.22.0.3'
 {{/applovin.meta_ios}}
 
 {{#applovin.mintegral_ios}}
 # Mintegral
-pod 'AppLovinMediationMintegralAdapter', '8.1.5.0.0'
+pod 'AppLovinMediationMintegralAdapter', '8.1.7.0.1'
 {{/applovin.mintegral_ios}}
 
 {{#applovin.mobilefuse_ios}}
 # MobileFuse
-pod 'AppLovinMediationMobileFuseAdapter', '1.11.1.0'
+pod 'AppLovinMediationMobileFuseAdapter', '1.12.0.1'
 {{/applovin.mobilefuse_ios}}
 
 {{#applovin.moloco_ios}}
 # Moloco
-pod 'AppLovinMediationMolocoAdapter', '4.9.0.0'
+pod 'AppLovinMediationMolocoAdapter', '4.10.0.1'
 {{/applovin.moloco_ios}}
 
 {{#applovin.ogury_ios}}
 # Ogury
-pod 'AppLovinMediationOguryPresageAdapter', '5.2.3.0'
+pod 'AppLovinMediationOguryPresageAdapter', '5.3.1.0'
 {{/applovin.ogury_ios}}
 
 {{#applovin.pangle_ios}}
 # Pangle
-pod 'AppLovinMediationByteDanceAdapter', '8.2.0.7.0'
+pod 'AppLovinMediationByteDanceAdapter', '8.3.0.7.0'
 {{/applovin.pangle_ios}}
 
 {{#applovin.pubmatic_ios}}
 # PubMatic
-pod 'AppLovinMediationPubMaticAdapter', '5.2.0.0'
+pod 'AppLovinMediationPubMaticAdapter', '5.4.0.1'
 {{/applovin.pubmatic_ios}}
 
 {{#applovin.smaato_ios}}
 # Smaato
-pod 'AppLovinMediationSmaatoAdapter', '23.2.0.0'
+pod 'AppLovinMediationSmaatoAdapter', '23.2.2.0'
 {{/applovin.smaato_ios}}
 
 {{#applovin.tencent_ios}}
@@ -128,12 +128,12 @@ pod 'AppLovinMediationTencentGDTAdapter', '4.15.21.1'
 
 {{#applovin.unity_ads_ios}}
 # Unity Ads
-pod 'AppLovinMediationUnityAdsAdapter', '4.19.0.1'
+pod 'AppLovinMediationUnityAdsAdapter', '4.20.1.0'
 {{/applovin.unity_ads_ios}}
 
 {{#applovin.verve_ios}}
 # Verve
-pod 'AppLovinMediationVerveAdapter', '3.9.0.0'
+pod 'AppLovinMediationVerveAdapter', '3.9.2.0'
 {{/applovin.verve_ios}}
 
 {{#applovin.vk_ios}}
@@ -143,7 +143,7 @@ pod 'AppLovinMediationMyTargetAdapter', '5.45.0.0'
 
 {{#applovin.yandex_ios}}
 # Yandex
-pod 'AppLovinMediationYandexAdapter', '8.3.0.0'
+pod 'AppLovinMediationYandexAdapter', '8.5.0.1'
 {{/applovin.yandex_ios}}
 
 {{#applovin.yso_ios}}

@@ -4,7 +4,7 @@ Native AppLovin MAX extension for Defold on Android and iOS. It supports
 interstitial, rewarded, banner, and MREC ads, along with MAX debugging,
 consent, test-device, custom-event, and revenue APIs.
 
-Version 2.0.0 uses AppLovin MAX 13.6.3 and requires:
+Version 2.0.0 uses AppLovin MAX 13.6.4 and requires:
 
 - Defold 1.13.0 or newer
 - Android API 24 or newer
@@ -75,6 +75,11 @@ On iOS, each enabled adapter also adds its official SKAdNetwork identifiers.
 The repository example contains a demo SDK key. Debug builds initialize MAX
 and can open the Mediation Debugger; release builds do not pass the demo key to
 MAX. Add your own ad-unit IDs to test ad formats.
+
+The example disables all optional mediation adapters on Android and iOS.
+Android builds enable R8 using Defold 1.13.2 beta. See the
+[build instructions](DEVELOPMENT.md#build-with-bob) for the staging Extender
+command.
 
 ## Documentation
 

@@ -52,18 +52,43 @@ Keep release dependencies pinned to exact versions.
 
 ## Build with Bob
 
-Android APK:
+The example disables all optional mediation adapters on Android and iOS
+and enables R8 on Android. To build the Android example, use Defold
+1.13.2 beta with staging Extender:
 
 ```sh
 java -jar bob.jar \
   --archive \
   --platform armv7-android \
-  --architectures arm64-android \
+  --architectures armv7-android,arm64-android \
   --variant debug \
+  --with-symbols \
   --bundle-format apk \
-  --build-server https://build.defold.com \
+  --build-server https://build-stage.defold.com \
+  --bundle-output dist/android-r8 \
   resolve build bundle
 ```
+
+`game.project` selects `/builtins/manifests/android/dmengine.keep` through
+`android.r8_keep_rules`. Extender automatically combines those engine rules
+with `extension-applovin/manifests/android/applovin.keep` and the SDKs'
+consumer rules. The extension's generated keep file preserves its JNI bridge
+and includes two targeted `-dontwarn` rules for Moloco 4.12.0's optional
+LevelPlay integration. Moloco guards this integration with class lookups and
+exception handling, but its consumer rules omit
+`com.unity3d.mediation.LevelPlay` and
+`com.unity3d.mediation.impression.LevelPlayImpressionDataListener`.
+
+The keep-file setting enables shrinking, optimization, and obfuscation independently
+of the native engine variant. The debug variant allows the example's demo
+SDK key to initialize MAX. `--with-symbols` retains R8's `mapping.txt` in
+the bundle's symbols directory; check its R8 header to confirm the shrinker ran.
+See [Defold's R8 settings](https://defold.com/manuals/project-settings/#r8-keep-rules).
+
+When enabling Google adapters for testing, set `applovin.google_android_app_id`
+to Google's public
+[sample AdMob app ID](https://developers.google.com/admob/android/quick-start#configure_your_app)
+in a local settings file. Use your own app ID when testing your MAX ad units.
 
 iOS IPA:
 
@@ -98,6 +123,10 @@ demo_ios_interstitial_ad_unit_id = YOUR_IOS_AD_UNIT_ID
 Pass the file with `--settings /path/to/test.settings`. Keep ad-unit IDs,
 device IDs, and signing files out of the repository.
 
+To test mediated networks, also enable the corresponding adapter flags in
+the local settings file. All optional adapters are disabled in the checked-in
+example; see the [integration guide](docs/index.md#mediated-networks) for flags.
+
 ## Android smoke test
 
 ```sh
@@ -123,6 +152,29 @@ An emulator is useful for smoke testing. Validate mediated networks and consent
 behavior on physical devices before release.
 
 ## iOS smoke test
+
+For an Apple Silicon simulator, use Bob from Defold 1.13.2 beta or newer
+with the `arm64_sim-ios` target. When testing the beta, use staging Extender:
+
+```sh
+java -jar bob.jar \
+  --archive \
+  --platform arm64_sim-ios \
+  --architectures arm64_sim-ios \
+  --variant debug \
+  --build-server https://build-stage.defold.com \
+  --bundle-output dist/ios-simulator \
+  resolve build bundle
+
+xcrun simctl install booted dist/ios-simulator/AppLovinMAXDefoldDemo.app
+xcrun simctl launch --console booted com.defold.applovin.demo
+```
+
+Use a device UUID instead of `booted` when several simulators are running.
+Verify one `OnSdkInitializedEvent`, successful adapter initialization, and
+the Mediation Debugger. Keep the app running long enough to catch crashes
+after initialization. Enable any iOS mediation adapters needed for the test
+through the local settings file.
 
 Test a signed build on a physical device. Verify that:
 

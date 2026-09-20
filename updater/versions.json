@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "catalog_version": "2026-07-29",
+  "catalog_version": "2026-09-20",
   "scope": {
     "core_sdk_only": true,
     "note": "This catalog locks the AppLovin MAX core SDK and the consent dependency used by the example. Mediated-network adapters are publisher-specific and intentionally remain outside this repository.",
@@ -16,12 +16,12 @@
     "minimum_sdk": 24,
     "target_sdk": 36,
     "sdk": {
-      "coordinate": "com.applovin:applovin-sdk:13.6.3",
-      "version": "13.6.3",
+      "coordinate": "com.applovin:applovin-sdk:13.6.4",
+      "version": "13.6.4",
       "repository": "https://repo1.maven.org/maven2",
       "metadata_url": "https://repo1.maven.org/maven2/com/applovin/applovin-sdk/maven-metadata.xml",
-      "artifact_url": "https://repo1.maven.org/maven2/com/applovin/applovin-sdk/13.6.3/applovin-sdk-13.6.3.aar",
-      "artifact_sha256": "384745ba1952f0f516feeeca67d64edf346d2ccc577fa2c1bcd3f0cf3ea30b33",
+      "artifact_url": "https://repo1.maven.org/maven2/com/applovin/applovin-sdk/13.6.4/applovin-sdk-13.6.4.aar",
+      "artifact_sha256": "35c893f8f02e1bbdb2eb05bf728745b431a1854f17d65b0c7bc60eead018ee52",
       "consumer_rules_sha256": "9f9774a1a4978172d468e6f4d8e63bb0f167e5b05ba8f94817c3666bf6b2335b",
       "consumer_rules": [
         "-dontwarn com.applovin.**",
@@ -34,7 +34,7 @@
         "-keep class com.google.android.gms.tasks.** { *; }",
         "-keep public class com.google.android.ump.** { public protected *; }"
       ],
-      "release": "https://github.com/AppLovin/AppLovin-MAX-SDK-Android/releases/tag/release_13_6_3"
+      "release": "https://github.com/AppLovin/AppLovin-MAX-SDK-Android/releases/tag/release_13_6_4"
     },
     "consent": {
       "coordinate": "com.google.android.ump:user-messaging-platform:4.0.0",
@@ -54,12 +54,12 @@
   "ios": {
     "minimum_version": "12.0",
     "pod": "AppLovinSDK",
-    "version": "13.6.3",
-    "podspec_url": "https://trunk.cocoapods.org/api/v1/pods/AppLovinSDK/specs/13.6.3",
-    "podspec_sha256": "4cbdaa3205434410d985f6f60247d4c18a23df9947067f08552f1298f8272bfc",
-    "archive_url": "https://artifacts.applovin.com/ios/com/applovin/applovin-sdk/applovin-ios-sdk-13.6.3.zip",
-    "archive_sha256": "a1862743c28b42214b225e8b3724972a05b3aed60c8cdada4343098c2e6e4d12",
-    "release": "https://github.com/AppLovin/AppLovin-MAX-SDK-iOS/releases/tag/release_13_6_3",
+    "version": "13.6.4",
+    "podspec_url": "https://trunk.cocoapods.org/api/v1/pods/AppLovinSDK/specs/13.6.4",
+    "podspec_sha256": "5cb5e6d9d2f7f1309bcbcf44cca30da11ba6be3c79e90f5b3be1c65d8b3e5481",
+    "archive_url": "https://artifacts.applovin.com/ios/com/applovin/applovin-sdk/applovin-ios-sdk-13.6.4.zip",
+    "archive_sha256": "5449d325958c05df978c7123f089f2a91dc0488c177d73addc4e1811ea8a5b17",
+    "release": "https://github.com/AppLovin/AppLovin-MAX-SDK-iOS/releases/tag/release_13_6_4",
     "skadnetwork_url": "https://skadnetwork-ids.applovin.com/v1/skadnetworkids.json",
     "skadnetwork_ids": [
       "22mmun2rn5.skadnetwork",
@@ -215,14 +215,14 @@
       "zmvfpc5aq8.skadnetwork",
       "zq492l623r.skadnetwork"
     ],
-    "device_framework_subpath": "applovin-ios-sdk-13.6.3/AppLovinSDK.xcframework/ios-arm64/AppLovinSDK.framework",
-    "simulator_framework_subpath": "applovin-ios-sdk-13.6.3/AppLovinSDK.xcframework/ios-arm64_x86_64-simulator/AppLovinSDK.framework",
-    "framework_info_sha256": "aa7280ed4eea63649d1af6bb1e14a9b4c6b9904f187a0f5dbd5da63989fccff5",
+    "device_framework_subpath": "applovin-ios-sdk-13.6.4/AppLovinSDK.xcframework/ios-arm64/AppLovinSDK.framework",
+    "simulator_framework_subpath": "applovin-ios-sdk-13.6.4/AppLovinSDK.xcframework/ios-arm64_x86_64-simulator/AppLovinSDK.framework",
+    "framework_info_sha256": "46d7272325e13a6d1246c8544e1ab42505f984ce7feec96407657b46125f836c",
     "privacy_manifest_sha256": "80e38881dbfb3b165f9ef35cfa43b28eac00d5b18058a127588c294193841c9f",
     "resource_bundle": {
       "directory": "AppLovinSDKResources.bundle",
       "file_count": 28,
-      "tree_sha256": "9ed6901b94e4aa716071705f167c4e453198b2d7a2b57b1de4805618f461cb35",
+      "tree_sha256": "2c798879011d46946bc8dba5526dd3433f687c0f03fd9e66d4c7575fc96918c5",
       "omid_version": "1.6.2"
     },
     "frameworks": [

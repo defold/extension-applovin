@@ -73,11 +73,13 @@ dependencies {
     {{#applovin.google_android}}
     // Google Bidding and Google AdMob
     implementation 'com.applovin.mediation:google-adapter:25.5.0.0'
+    implementation 'androidx.datastore:datastore:1.2.1'
     {{/applovin.google_android}}
 
     {{#applovin.google_ad_manager_android}}
     // Google Ad Manager
     implementation 'com.applovin.mediation:google-ad-manager-adapter:25.5.0.0'
+    implementation 'androidx.datastore:datastore:1.2.1'
     {{/applovin.google_ad_manager_android}}
 
     {{#applovin.hyprmx_android}}

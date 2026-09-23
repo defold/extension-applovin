@@ -90,6 +90,11 @@ When enabling Google adapters for testing, set `applovin.google_android_app_id`
 to Google's public
 [sample AdMob app ID](https://developers.google.com/admob/android/quick-start#configure_your_app)
 in a local settings file. Use your own app ID when testing your MAX ad units.
+The Google and Google Ad Manager switches also select AndroidX DataStore 1.2.1.
+Google Mobile Ads 25.5.0 requests DataStore 1.0.0, while DataStore 1.2.0 added
+the missing JNI consumer R8 rule for `NativeSharedCounter`. Extender collects
+that rule from the updated DataStore artifact; no extension keep rule is needed.
+See the [AndroidX release notes](https://developer.android.com/jetpack/androidx/releases/datastore#1.2.0).
 
 iOS IPA:
 

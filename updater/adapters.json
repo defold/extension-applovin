@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "catalog_version": "2026-09-20",
+  "catalog_version": "2026-09-23",
   "sources": {
     "defold_mediated_networks": "https://support.applovin.com/en/max/defold/preparing-mediated-networks",
     "android_adapters": "https://github.com/AppLovin/AppLovin-MAX-SDK-Android",
@@ -45,11 +45,17 @@
       },
       "google_ad_manager": {
         "display_name": "Google Ad Manager",
-        "coordinate": "com.applovin.mediation:google-ad-manager-adapter:25.5.0.0"
+        "coordinate": "com.applovin.mediation:google-ad-manager-adapter:25.5.0.0",
+        "extra_dependencies": [
+          "androidx.datastore:datastore:1.2.1"
+        ]
       },
       "google": {
         "display_name": "Google Bidding and Google AdMob",
-        "coordinate": "com.applovin.mediation:google-adapter:25.5.0.0"
+        "coordinate": "com.applovin.mediation:google-adapter:25.5.0.0",
+        "extra_dependencies": [
+          "androidx.datastore:datastore:1.2.1"
+        ]
       },
       "hyprmx": {
         "display_name": "HyprMX",

@@ -116,6 +116,21 @@ class OptionalAdapterContractTests(unittest.TestCase):
             android["bidmachine"]["repositories"][0], disabled
         )
 
+    def test_google_adapters_select_datastore_with_jni_consumer_rule(self) -> None:
+        dependency = "androidx.datastore:datastore:1.2.1"
+        disabled = render_boolean_sections(self.gradle, set())
+        self.assertNotIn(dependency, disabled)
+        for key in ("google", "google_ad_manager"):
+            with self.subTest(adapter=key):
+                self.assertIn(
+                    dependency,
+                    self.catalog["android"]["networks"][key]["extra_dependencies"],
+                )
+                enabled = render_boolean_sections(
+                    self.gradle, {f"applovin.{key}_android"}
+                )
+                self.assertIn(f"implementation '{dependency}'", enabled)
+
     def test_ios_mustache_switches_control_pods(self) -> None:
         ios = self.catalog["ios"]["networks"]
         disabled = render_boolean_sections(self.podfile, set())

@@ -8,6 +8,7 @@
 
 #import <AppLovinSDK/AppLovinSDK.h>
 #import "MADefoldPlugin.h"
+#import "../include/MADefoldAdEvents.h"
 
 typedef NS_ENUM(NSInteger, MADefoldPluginState)
 {
@@ -257,6 +258,69 @@ static UIColor * _Nullable MAColorFromHexString(NSString *hexString)
     [self withCurrentPlugin:^(MADefoldPlugin *plugin) {
         [plugin didPayRevenueForAd: ad];
     }];
+}
+
+@end
+
+@interface MADefoldAdEvents ()
++ (void)notifyAdDisplayed:(MAAd *)ad;
++ (void)notifyAdRevenuePaid:(MAAd *)ad;
+@end
+
+@implementation MADefoldAdEvents
+
+static NSHashTable<id<MADefoldAdEventListener>> *MAAdEventListeners(void)
+{
+    static NSHashTable<id<MADefoldAdEventListener>> *listeners;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        listeners = [NSHashTable weakObjectsHashTable];
+    });
+    return listeners;
+}
+
++ (void)addListener:(id<MADefoldAdEventListener>)listener
+{
+    if ( !listener ) return;
+    MARunSynchronouslyOnMainQueue(^{ [MAAdEventListeners() addObject: listener]; });
+}
+
++ (void)removeListener:(id<MADefoldAdEventListener>)listener
+{
+    if ( !listener ) return;
+    MARunSynchronouslyOnMainQueue(^{ [MAAdEventListeners() removeObject: listener]; });
+}
+
++ (void)notifyAdDisplayed:(MAAd *)ad
+{
+    for ( id<MADefoldAdEventListener> listener in MAAdEventListeners().allObjects )
+    {
+        if ( ![listener respondsToSelector: @selector(onMaxAdDisplayed:)] ) continue;
+        @try
+        {
+            [listener onMaxAdDisplayed: ad];
+        }
+        @catch ( NSException *exception )
+        {
+            NSLog(@"MADefoldAdEvents display listener failed: %@", exception);
+        }
+    }
+}
+
++ (void)notifyAdRevenuePaid:(MAAd *)ad
+{
+    for ( id<MADefoldAdEventListener> listener in MAAdEventListeners().allObjects )
+    {
+        if ( ![listener respondsToSelector: @selector(onMaxAdRevenuePaid:)] ) continue;
+        @try
+        {
+            [listener onMaxAdRevenuePaid: ad];
+        }
+        @catch ( NSException *exception )
+        {
+            NSLog(@"MADefoldAdEvents revenue listener failed: %@", exception);
+        }
+    }
 }
 
 @end
@@ -1072,6 +1136,7 @@ static NSString *const TAG = @"MADefoldPlugin";
     }
     
     [self sendDefoldEventWithName: name parameters: [self adInfoForAd: ad]];
+    [MADefoldAdEvents notifyAdDisplayed: ad];
 }
 
 - (void)didFailToDisplayAd:(MAAd *)ad withError:(MAError *)error
@@ -1226,6 +1291,7 @@ static NSString *const TAG = @"MADefoldPlugin";
     }
     
     [self sendDefoldEventWithName: name parameters: [self adInfoForAd: ad]];
+    [MADefoldAdEvents notifyAdRevenuePaid: ad];
 }
 
 #pragma mark - Internal Methods

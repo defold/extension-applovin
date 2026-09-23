@@ -1550,10 +1550,12 @@ public class MaxDefoldPlugin
         if ( adFormat == MaxAdFormat.INTERSTITIAL )
         {
             sendDefoldEvent( "OnInterstitialAdDisplayedEvent", getAdInfo( ad ) );
+            MaxAdEventBus.notifyAdDisplayed( ad );
         }
         else if ( adFormat == MaxAdFormat.REWARDED )
         {
             sendDefoldEvent( "OnRewardedAdDisplayedEvent", getAdInfo( ad ) );
+            MaxAdEventBus.notifyAdDisplayed( ad );
         }
     }
 
@@ -1740,6 +1742,7 @@ public class MaxDefoldPlugin
             return;
         }
         sendDefoldEvent( name, getAdInfo( ad ) );
+        MaxAdEventBus.notifyAdRevenuePaid( ad );
     }
     // endregion
 

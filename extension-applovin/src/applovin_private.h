@@ -60,7 +60,7 @@ void LoadInterstitial(const char* adUnitId);
 
 bool IsInterstitialReady(const char* adUnitId);
 
-void ShowInterstitial(const char* adUnitId, const char* placement);
+void ShowInterstitial(const char* adUnitId, const char* placement, const char* customData);
 
 void SetInterstitialExtraParameter(const char* adUnitId, const char* key, const char* value);
 
@@ -68,7 +68,7 @@ void LoadRewardedAd(const char* adUnitId);
 
 bool IsRewardedAdReady(const char* adUnitId);
 
-void ShowRewardedAd(const char* adUnitId, const char* placement);
+void ShowRewardedAd(const char* adUnitId, const char* placement, const char* customData);
 
 void SetRewardedAdExtraParameter(const char* adUnitId, const char* key, const char* value);
 
@@ -77,6 +77,8 @@ void CreateBanner(const char* adUnitId, const char* bannerPosition);
 void SetBannerBackgroundColor(const char* adUnitId, const char* hexColorCode);
 
 void SetBannerPlacement(const char* adUnitId, const char* placement);
+
+void SetBannerCustomData(const char* adUnitId, const char* customData);
 
 void SetBannerExtraParameter(const char* adUnitId, const char* key, const char* value);
 

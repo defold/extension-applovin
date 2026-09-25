@@ -351,6 +351,11 @@
         type: string
         optional: true
         desc: MAX placement name.
+      - name: custom_data
+        type: string
+        optional: true
+        desc: Custom data passed to MAX for this impression. Omitted or nil uses an empty string.
+
 
 #*****************************************************************************************************
 
@@ -398,6 +403,11 @@
         type: string
         optional: true
         desc: MAX placement name.
+      - name: custom_data
+        type: string
+        optional: true
+        desc: Custom data passed to MAX for this impression. Omitted or nil uses an empty string.
+
 
 #*****************************************************************************************************
 
@@ -447,6 +457,19 @@
       - name: ad_unit_id
         type: string
       - name: placement
+        type: string
+
+#*****************************************************************************************************
+
+  - name: set_banner_custom_data
+    type: function
+    desc: "Sets custom data after OnSdkInitializedEvent. Call before create_banner() to include it
+          in the first load. Later calls update the existing view for subsequent loads; they do
+          not reload it. Pass an empty string to clear. Destroying the banner clears cached data."
+    parameters:
+      - name: ad_unit_id
+        type: string
+      - name: custom_data
         type: string
 
 #*****************************************************************************************************

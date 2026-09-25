@@ -323,6 +323,7 @@ struct AppLovin
     jmethodID m_CreateBanner;
     jmethodID m_SetBannerBackgroundColor;
     jmethodID m_SetBannerPlacement;
+    jmethodID m_SetBannerCustomData;
     jmethodID m_SetBannerExtraParameter;
     jmethodID m_UpdateBannerPosition;
     jmethodID m_StartBannerAutoRefresh;
@@ -533,15 +534,16 @@ static void InitJNIMethods(JNIEnv* env, jclass cls)
     g_applovin.m_TrackEvent = env->GetMethodID(cls, "trackEvent", "(Ljava/lang/String;Ljava/lang/String;)V");
     g_applovin.m_LoadInterstitial = env->GetMethodID(cls, "loadInterstitial", "(Ljava/lang/String;)V");
     g_applovin.m_IsInterstitialReady = env->GetMethodID(cls, "isInterstitialReady", "(Ljava/lang/String;)Z");
-    g_applovin.m_ShowInterstitial = env->GetMethodID(cls, "showInterstitial", "(Ljava/lang/String;Ljava/lang/String;)V");
+    g_applovin.m_ShowInterstitial = env->GetMethodID(cls, "showInterstitial", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
     g_applovin.m_SetInterstitialExtraParameter = env->GetMethodID(cls, "setInterstitialExtraParameter", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
     g_applovin.m_LoadRewardedAd = env->GetMethodID(cls, "loadRewardedAd", "(Ljava/lang/String;)V");
     g_applovin.m_IsRewardedAdReady = env->GetMethodID(cls, "isRewardedAdReady", "(Ljava/lang/String;)Z");
-    g_applovin.m_ShowRewardedAd = env->GetMethodID(cls, "showRewardedAd", "(Ljava/lang/String;Ljava/lang/String;)V");
+    g_applovin.m_ShowRewardedAd = env->GetMethodID(cls, "showRewardedAd", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
     g_applovin.m_SetRewardedAdExtraParameter = env->GetMethodID(cls, "setRewardedAdExtraParameter", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
     g_applovin.m_CreateBanner = env->GetMethodID(cls, "createBanner", "(Ljava/lang/String;Ljava/lang/String;)V");
     g_applovin.m_SetBannerBackgroundColor = env->GetMethodID(cls, "setBannerBackgroundColor", "(Ljava/lang/String;Ljava/lang/String;)V");
     g_applovin.m_SetBannerPlacement = env->GetMethodID(cls, "setBannerPlacement", "(Ljava/lang/String;Ljava/lang/String;)V");
+    g_applovin.m_SetBannerCustomData = env->GetMethodID(cls, "setBannerCustomData", "(Ljava/lang/String;Ljava/lang/String;)V");
     g_applovin.m_SetBannerExtraParameter = env->GetMethodID(cls, "setBannerExtraParameter", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
     g_applovin.m_UpdateBannerPosition = env->GetMethodID(cls, "updateBannerPosition", "(Ljava/lang/String;Ljava/lang/String;)V");
     g_applovin.m_StartBannerAutoRefresh = env->GetMethodID(cls, "startBannerAutoRefresh", "(Ljava/lang/String;)V");
@@ -828,9 +830,9 @@ bool IsInterstitialReady(const char* adUnitId)
     return CallBoolMethodChar(g_applovin.m_MaxDefoldPlugin, g_applovin.m_IsInterstitialReady, adUnitId);
 }
 
-void ShowInterstitial(const char* adUnitId, const char* placement)
+void ShowInterstitial(const char* adUnitId, const char* placement, const char* customData)
 {
-    CallVoidMethodCharChar(g_applovin.m_MaxDefoldPlugin, g_applovin.m_ShowInterstitial, adUnitId, placement);
+    CallVoidMethodCharCharChar(g_applovin.m_MaxDefoldPlugin, g_applovin.m_ShowInterstitial, adUnitId, placement, customData);
 }
 
 void SetInterstitialExtraParameter(const char* adUnitId, const char* key, const char* value)
@@ -848,9 +850,9 @@ bool IsRewardedAdReady(const char* adUnitId)
     return CallBoolMethodChar(g_applovin.m_MaxDefoldPlugin, g_applovin.m_IsRewardedAdReady, adUnitId);
 }
 
-void ShowRewardedAd(const char* adUnitId, const char* placement)
+void ShowRewardedAd(const char* adUnitId, const char* placement, const char* customData)
 {
-    CallVoidMethodCharChar(g_applovin.m_MaxDefoldPlugin, g_applovin.m_ShowRewardedAd, adUnitId, placement);
+    CallVoidMethodCharCharChar(g_applovin.m_MaxDefoldPlugin, g_applovin.m_ShowRewardedAd, adUnitId, placement, customData);
 }
 
 void SetRewardedAdExtraParameter(const char* adUnitId, const char* key, const char* value)
@@ -871,6 +873,11 @@ void SetBannerBackgroundColor(const char* adUnitId, const char* hexColorCode)
 void SetBannerPlacement(const char* adUnitId, const char* placement)
 {
     CallVoidMethodCharChar(g_applovin.m_MaxDefoldPlugin, g_applovin.m_SetBannerPlacement, adUnitId, placement);
+}
+
+void SetBannerCustomData(const char* adUnitId, const char* customData)
+{
+    CallVoidMethodCharChar(g_applovin.m_MaxDefoldPlugin, g_applovin.m_SetBannerCustomData, adUnitId, customData);
 }
 
 void SetBannerExtraParameter(const char* adUnitId, const char* key, const char* value)

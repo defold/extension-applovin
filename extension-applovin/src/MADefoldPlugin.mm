@@ -130,6 +130,7 @@ static UIColor * _Nullable MAColorFromHexString(NSString *hexString)
 @property (nonatomic, strong) NSMutableDictionary<NSString *, MAAdFormat *> *adViewAdFormats;
 @property (nonatomic, strong) NSMutableDictionary<NSString *, NSString *> *adViewPositions;
 @property (nonatomic, strong) NSMutableDictionary<NSString *, NSString *> *adViewPlacements;
+@property (nonatomic, strong) NSMutableDictionary<NSString *, NSString *> *bannerCustomData;
 @property (nonatomic, strong) NSMutableDictionary<NSString *, NSMutableDictionary<NSString *, id> *> *adViewExtraParameters;
 @property (nonatomic, strong) NSMutableDictionary<NSString *, NSNumber *> *adViewAutoRefreshEnabled;
 @property (nonatomic, strong) NSMutableDictionary<NSString *, NSNumber *> *adViewGenerations;
@@ -343,6 +344,7 @@ static NSString *const TAG = @"MADefoldPlugin";
         self.adViewAdFormats = [NSMutableDictionary dictionaryWithCapacity: 2];
         self.adViewPositions = [NSMutableDictionary dictionaryWithCapacity: 2];
         self.adViewPlacements = [NSMutableDictionary dictionaryWithCapacity: 2];
+        self.bannerCustomData = [NSMutableDictionary dictionaryWithCapacity: 2];
         self.adViewExtraParameters = [NSMutableDictionary dictionaryWithCapacity: 2];
         self.adViewAutoRefreshEnabled = [NSMutableDictionary dictionaryWithCapacity: 2];
         self.adViewGenerations = [NSMutableDictionary dictionaryWithCapacity: 2];
@@ -512,6 +514,7 @@ static NSString *const TAG = @"MADefoldPlugin";
         [self.adViewAdFormats removeAllObjects];
         [self.adViewPositions removeAllObjects];
         [self.adViewPlacements removeAllObjects];
+        [self.bannerCustomData removeAllObjects];
         [self.adViewExtraParameters removeAllObjects];
         [self.adViewAutoRefreshEnabled removeAllObjects];
         [self.adViewGenerations removeAllObjects];
@@ -820,13 +823,13 @@ static NSString *const TAG = @"MADefoldPlugin";
     return ready;
 }
 
-- (void)showInterstitialForAdUnitIdentifier:(NSString *)adUnitIdentifier placement:(NSString *)placement
+- (void)showInterstitialForAdUnitIdentifier:(NSString *)adUnitIdentifier placement:(NSString *)placement customData:(NSString *)customData
 {
     MARunOnMainQueue(^{
         if ( self.state != MADefoldPluginStateReady ) return;
 
         MAInterstitialAd *interstitial = [self retrieveInterstitialForAdUnitIdentifier: adUnitIdentifier];
-        [interstitial showAdForPlacement: placement];
+        [interstitial showAdForPlacement: placement customData: customData];
     });
 }
 
@@ -864,13 +867,13 @@ static NSString *const TAG = @"MADefoldPlugin";
     return ready;
 }
 
-- (void)showRewardedAdForAdUnitIdentifier:(NSString *)adUnitIdentifier placement:(NSString *)placement
+- (void)showRewardedAdForAdUnitIdentifier:(NSString *)adUnitIdentifier placement:(NSString *)placement customData:(NSString *)customData
 {
     MARunOnMainQueue(^{
         if ( self.state != MADefoldPluginStateReady ) return;
 
         MARewardedAd *rewardedAd = [self retrieveRewardedAdForAdUnitIdentifier: adUnitIdentifier];
-        [rewardedAd showAdForPlacement: placement];
+        [rewardedAd showAdForPlacement: placement customData: customData];
     });
 }
 
@@ -899,6 +902,17 @@ static NSString *const TAG = @"MADefoldPlugin";
 - (void)setBannerPlacement:(nullable NSString *)placement forAdUnitIdentifier:(NSString *)adUnitIdentifier
 {
     [self setAdViewPlacement: placement forAdUnitIdentifier: adUnitIdentifier adFormat: MADeviceSpecificAdViewAdFormat()];
+}
+
+- (void)setBannerCustomData:(NSString *)customData forAdUnitIdentifier:(NSString *)adUnitIdentifier
+{
+    MARunOnMainQueue(^{
+        if ( self.state != MADefoldPluginStateReady ) return;
+
+        self.bannerCustomData[adUnitIdentifier] = customData;
+        MAAdView *adView = self.adViews[adUnitIdentifier];
+        adView.customData = customData;
+    });
 }
 
 - (void)setBannerExtraParameterForAdUnitIdentifier:(NSString *)adUnitIdentifier key:(NSString *)key value:(nullable NSString *)value
@@ -1347,6 +1361,7 @@ static NSString *const TAG = @"MADefoldPlugin";
                 adView.placement = placement;
             }
             [self applyCachedExtraParametersToAdView: adView adUnitIdentifier: adUnitIdentifier];
+            adView.customData = self.bannerCustomData[adUnitIdentifier];
             [adView loadAd];
         });
         
@@ -1603,6 +1618,7 @@ static NSString *const TAG = @"MADefoldPlugin";
         [self.adViews removeObjectForKey: adUnitIdentifier];
         [self.adViewPositions removeObjectForKey: adUnitIdentifier];
         [self.adViewPlacements removeObjectForKey: adUnitIdentifier];
+        [self.bannerCustomData removeObjectForKey: adUnitIdentifier];
         [self.adViewExtraParameters removeObjectForKey: adUnitIdentifier];
         [self.adViewAutoRefreshEnabled removeObjectForKey: adUnitIdentifier];
         [self.adViewGenerations removeObjectForKey: adUnitIdentifier];

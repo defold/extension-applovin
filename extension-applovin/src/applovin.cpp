@@ -269,7 +269,8 @@ static int Lua_ShowInterstitial(lua_State* L)
     DM_LUA_STACK_CHECK(L, 0);
     const char* lua_adUnitId = luaL_checkstring(L, 1);
     const char* lua_placement = luaL_optstring(L, 2, "");
-    ShowInterstitial(lua_adUnitId, lua_placement);
+    const char* customData = luaL_optstring(L, 3, "");
+    ShowInterstitial(lua_adUnitId, lua_placement, customData);
     return 0;
 }
 
@@ -305,7 +306,8 @@ static int Lua_ShowRewardedAd(lua_State* L)
     DM_LUA_STACK_CHECK(L, 0);
     const char* adUnitId = luaL_checkstring(L, 1);
     const char* lua_placement = luaL_optstring(L, 2, "");
-    ShowRewardedAd(adUnitId, lua_placement);
+    const char* customData = luaL_optstring(L, 3, "");
+    ShowRewardedAd(adUnitId, lua_placement, customData);
     return 0;
 }
 
@@ -343,6 +345,15 @@ static int Lua_SetBannerPlacement(lua_State* L)
     const char* adUnitId = luaL_checkstring(L, 1);
     const char* placement = luaL_checkstring(L, 2);
     SetBannerPlacement(adUnitId, placement);
+    return 0;
+}
+
+static int Lua_SetBannerCustomData(lua_State* L)
+{
+    DM_LUA_STACK_CHECK(L, 0);
+    const char* adUnitId = luaL_checkstring(L, 1);
+    const char* customData = luaL_checkstring(L, 2);
+    SetBannerCustomData(adUnitId, customData);
     return 0;
 }
 
@@ -518,6 +529,7 @@ static const luaL_reg Module_methods[] =
     {"set_rewarded_ad_extra_parameter", Lua_SetRewardedAdExtraParameter},
     {"set_banner_background_color", Lua_SetBannerBackgroundColor},
     {"set_banner_placement", Lua_SetBannerPlacement},
+    {"set_banner_custom_data", Lua_SetBannerCustomData},
     {"set_banner_extra_parameter", Lua_SetBannerExtraParameter},
     {"update_banner_position", Lua_UpdateBannerPosition},
     {"start_banner_auto_refresh", Lua_StartBannerAutoRefresh},

@@ -353,6 +353,37 @@ Follow the
 for account setup, permissions, manifests, privacy disclosures, and any extra
 initialization. Re-run the Mediation Debugger after changing adapters.
 
+## Custom data
+
+Fullscreen ads accept an optional third argument on Android and iOS:
+
+```lua
+applovin.show_rewarded_ad(rewarded_id, "reward_screen", custom_data)
+applovin.show_interstitial(interstitial_id, nil, custom_data)
+```
+
+Existing one- and two-argument calls remain valid. Omitted or `nil` custom data
+uses an empty string for that show, so a previous show's value is not reused.
+
+For banners, wait for `OnSdkInitializedEvent`, then set data **before** creation:
+
+```lua
+applovin.set_banner_custom_data(banner_id, custom_data)
+applovin.create_banner(banner_id, "bottom_center")
+applovin.show_banner(banner_id)
+```
+
+The setter caches data per ad unit without creating or loading an ad. On an
+existing banner it updates the view for subsequent loads, including automatic
+refreshes; it does not reload the ad or change an impression already loaded.
+Pass `""` to clear it. Hiding a banner retains its value; destroying it or
+finalizing the extension clears it, including values set before creation.
+Set the value again before recreating the banner.
+
+The extension forwards the string to MAX without business encoding or signing.
+The caller is responsible for those operations and for following MAX's
+[custom data requirements](https://support.applovin.com/en/max/advanced-features/s2s-impression-level-api#setting-custom-data).
+
 ## Custom events
 
 `track_event()` takes a non-empty event name and a JSON object:

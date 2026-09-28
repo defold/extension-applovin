@@ -256,12 +256,13 @@ bool IsInterstitialReady(const char* adUnitId)
     return adUnitIdentifier ? [g_IosPlugin isInterstitialReadyForAdUnitIdentifier:adUnitIdentifier] : false;
 }
 
-void ShowInterstitial(const char* adUnitId, const char* placement)
+void ShowInterstitial(const char* adUnitId, const char* placement, const char* customData)
 {
     NSString* adUnitIdentifier = StringFromUtf8(adUnitId, "interstitial ad unit ID");
     NSString* placementString = StringFromUtf8(placement, "interstitial placement");
-    if (!adUnitIdentifier || !placementString) return;
-    [g_IosPlugin showInterstitialForAdUnitIdentifier:adUnitIdentifier placement:placementString];
+    NSString* customDataString = StringFromUtf8(customData, "ad custom data");
+    if (!adUnitIdentifier || !placementString || !customDataString) return;
+    [g_IosPlugin showInterstitialForAdUnitIdentifier:adUnitIdentifier placement:placementString customData:customDataString];
 }
 
 void SetInterstitialExtraParameter(const char* adUnitId, const char* key, const char* value)
@@ -288,12 +289,13 @@ bool IsRewardedAdReady(const char* adUnitId)
     return adUnitIdentifier ? [g_IosPlugin isRewardedAdReadyForAdUnitIdentifier:adUnitIdentifier] : false;
 }
 
-void ShowRewardedAd(const char* adUnitId, const char* placement)
+void ShowRewardedAd(const char* adUnitId, const char* placement, const char* customData)
 {
     NSString* adUnitIdentifier = StringFromUtf8(adUnitId, "rewarded ad unit ID");
     NSString* placementString = StringFromUtf8(placement, "rewarded placement");
-    if (!adUnitIdentifier || !placementString) return;
-    [g_IosPlugin showRewardedAdForAdUnitIdentifier:adUnitIdentifier placement:placementString];
+    NSString* customDataString = StringFromUtf8(customData, "ad custom data");
+    if (!adUnitIdentifier || !placementString || !customDataString) return;
+    [g_IosPlugin showRewardedAdForAdUnitIdentifier:adUnitIdentifier placement:placementString customData:customDataString];
 }
 
 void SetRewardedAdExtraParameter(const char* adUnitId, const char* key, const char* value)
@@ -330,6 +332,14 @@ void SetBannerPlacement(const char* adUnitId, const char* placement)
     NSString* placementString = StringFromUtf8(placement, "banner placement");
     if (!adUnitIdentifier || !placementString) return;
     [g_IosPlugin setBannerPlacement:placementString forAdUnitIdentifier:adUnitIdentifier];
+}
+
+void SetBannerCustomData(const char* adUnitId, const char* customData)
+{
+    NSString* adUnitIdentifier = StringFromUtf8(adUnitId, "banner ad unit ID");
+    NSString* customDataString = StringFromUtf8(customData, "banner custom data");
+    if (!adUnitIdentifier || !customDataString) return;
+    [g_IosPlugin setBannerCustomData:customDataString forAdUnitIdentifier:adUnitIdentifier];
 }
 
 void SetBannerExtraParameter(const char* adUnitId, const char* key, const char* value)

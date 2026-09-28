@@ -47,20 +47,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)loadInterstitialForAdUnitIdentifier:(NSString *)adUnitIdentifier;
 - (BOOL)isInterstitialReadyForAdUnitIdentifier:(NSString *)adUnitIdentifier;
-- (void)showInterstitialForAdUnitIdentifier:(NSString *)adUnitIdentifier placement:(NSString *)placement;
+- (void)showInterstitialForAdUnitIdentifier:(NSString *)adUnitIdentifier placement:(NSString *)placement customData:(NSString *)customData;
 - (void)setInterstitialExtraParameterForAdUnitIdentifier:(NSString *)adUnitIdentifier key:(NSString *)key value:(NSString *)value;
 
 #pragma mark - Rewarded
 
 - (void)loadRewardedAdForAdUnitIdentifier:(NSString *)adUnitIdentifier;
 - (BOOL)isRewardedAdReadyForAdUnitIdentifier:(NSString *)adUnitIdentifier;
-- (void)showRewardedAdForAdUnitIdentifier:(NSString *)adUnitIdentifier placement:(NSString *)placement;
+- (void)showRewardedAdForAdUnitIdentifier:(NSString *)adUnitIdentifier placement:(NSString *)placement customData:(NSString *)customData;
 - (void)setRewardedAdExtraParameterForAdUnitIdentifier:(NSString *)adUnitIdentifier key:(NSString *)key value:(nullable NSString *)value;
 
 #pragma mark - Banners
 
 - (void)createBannerForAdUnitIdentifier:(NSString *)adUnitIdentifier atPosition:(NSString *)bannerPosition;
 - (void)setBannerBackgroundColorForAdUnitIdentifier:(NSString *)adUnitIdentifier hexColorCode:(NSString *)hexColorCode;
+- (void)setBannerCustomData:(NSString *)customData forAdUnitIdentifier:(NSString *)adUnitIdentifier;
 - (void)setBannerPlacement:(nullable NSString *)placement forAdUnitIdentifier:(NSString *)adUnitIdentifier;
 - (void)setBannerExtraParameterForAdUnitIdentifier:(NSString *)adUnitIdentifier key:(NSString *)key value:(nullable NSString *)value;
 - (void)updateBannerPosition:(NSString *)bannerPosition forAdUnitIdentifier:(NSString *)adUnitIdentifier;

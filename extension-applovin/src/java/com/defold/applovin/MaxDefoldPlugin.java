@@ -132,6 +132,7 @@ public class MaxDefoldPlugin
     private final Map<String, MaxAdView> mAdViews = new HashMap<>( 2 );
     private final Map<String, MaxAdFormat> mAdViewAdFormats = new HashMap<>( 2 );
     private final Map<String, String> mAdViewPlacements = new HashMap<>( 2 );
+    private final Map<String, String> mBannerCustomData = new HashMap<>( 2 );
     private final Map<String, Map<String, String>> mAdViewExtraParameters =
             new HashMap<>( 2 );
     private final Map<String, String> mAdViewPositions = new HashMap<>( 2 );
@@ -772,6 +773,7 @@ public class MaxDefoldPlugin
         mAdViews.clear();
         mAdViewAdFormats.clear();
         mAdViewPlacements.clear();
+        mBannerCustomData.clear();
         mAdViewExtraParameters.clear();
         mAdViewPositions.clear();
         mAdViewGenerations.clear();
@@ -1195,7 +1197,7 @@ public class MaxDefoldPlugin
         } );
     }
 
-    public void showInterstitial(final String adUnitId, final String placement)
+    public void showInterstitial(final String adUnitId, final String placement, final String customData)
     {
         runOnUiThread( "show interstitial", new ActivityAction()
         {
@@ -1204,7 +1206,7 @@ public class MaxDefoldPlugin
             {
                 if ( requireReady( "show interstitial" ) )
                 {
-                    retrieveInterstitial( adUnitId, activity ).showAd( placement, activity );
+                    retrieveInterstitial( adUnitId, activity ).showAd( placement, customData, activity );
                 }
             }
         } );
@@ -1258,7 +1260,7 @@ public class MaxDefoldPlugin
         } );
     }
 
-    public void showRewardedAd(final String adUnitId, final String placement)
+    public void showRewardedAd(final String adUnitId, final String placement, final String customData)
     {
         runOnUiThread( "show rewarded ad", new ActivityAction()
         {
@@ -1267,7 +1269,7 @@ public class MaxDefoldPlugin
             {
                 if ( requireReady( "show rewarded ad" ) )
                 {
-                    retrieveRewardedAd( adUnitId, activity ).showAd( placement, activity );
+                    retrieveRewardedAd( adUnitId, activity ).showAd( placement, customData, activity );
                 }
             }
         } );
@@ -1306,6 +1308,25 @@ public class MaxDefoldPlugin
     public void setBannerPlacement(final String adUnitId, final String placement)
     {
         setAdViewPlacement( adUnitId, getDeviceSpecificBannerAdViewAdFormat(), placement );
+    }
+
+    public void setBannerCustomData(final String adUnitId, final String customData)
+    {
+        runOnUiThread( "set banner custom data", new ActivityAction()
+        {
+            @Override
+            public void run(final Activity ignored)
+            {
+                if ( !requireReady( "set banner custom data" ) ) return;
+
+                mBannerCustomData.put( adUnitId, customData );
+                final MaxAdView adView = mAdViews.get( adUnitId );
+                if ( adView != null )
+                {
+                    adView.setCustomData( customData );
+                }
+            }
+        } );
     }
 
     public void setBannerExtraParameter(final String adUnitId, final String key, final String value)
@@ -1990,6 +2011,7 @@ public class MaxDefoldPlugin
                 mAdUnitIdsToShowAfterCreate.remove( adUnitId );
                 mAdUnitIdsWithStoppedAutoRefresh.remove( adUnitId );
                 mAdViewPlacements.remove( adUnitId );
+                mBannerCustomData.remove( adUnitId );
                 mAdViewExtraParameters.remove( adUnitId );
                 mAdViewGenerations.remove( adUnitId );
                 final MaxAdFormat effectiveAdFormat =
@@ -2275,6 +2297,7 @@ public class MaxDefoldPlugin
             {
                 result.setPlacement( placement );
             }
+            result.setCustomData( mBannerCustomData.get( adUnitId ) );
             mAdViews.put( adUnitId, result );
             mAdViewAdFormats.put( adUnitId, adFormat );
             mAdViewPositions.put( adUnitId, adViewPosition );

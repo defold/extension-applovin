@@ -73,8 +73,10 @@ java -jar bob.jar \
 `game.project` selects `/builtins/manifests/android/dmengine.keep` through
 `android.r8_keep_rules`. Extender automatically combines those engine rules
 with `extension-applovin/manifests/android/applovin.keep` and the SDKs'
-consumer rules. The extension's generated keep file preserves its JNI bridge
-and includes two targeted `-dontwarn` rules for Moloco 4.12.0's optional
+consumer rules. The extension's generated keep file preserves its JNI bridge,
+SDK methods annotated with `android.webkit.JavascriptInterface`, and their
+runtime annotations. This covers WebView bridges used by Google mediation.
+It also includes two targeted `-dontwarn` rules for Moloco 4.12.0's optional
 LevelPlay integration. Moloco guards this integration with class lookups and
 exception handling, but its consumer rules omit
 `com.unity3d.mediation.LevelPlay` and

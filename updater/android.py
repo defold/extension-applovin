@@ -107,6 +107,13 @@ def render_keep() -> str:
 # Native code resolves the extension's Java bridge and methods by name through JNI.
 -keep,allowoptimization class com.defold.applovin.** {{ *; }}
 
+# WebView calls SDK JavaScript bridge methods by name, including Google ads
+# mediation. Preserve the annotations and methods that R8 cannot trace.
+-keepattributes *Annotation*
+-keepclassmembers class * {{
+    @android.webkit.JavascriptInterface <methods>;
+}}
+
 # Moloco 4.12.0 optionally collects LevelPlay impression revenue. It checks for
 # LevelPlay with Class.forName inside a try/catch before registering a listener.
 # Its consumer rules cover com.ironsource.mediationsdk but omit these newer

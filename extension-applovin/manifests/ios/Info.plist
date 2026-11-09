@@ -408,6 +408,7 @@
 {{/applovin.unity_ads_ios}}
 {{#applovin.verve_ios}}
             <dict><key>SKAdNetworkIdentifier</key><string>ln5gz23vtd.skadnetwork</string></dict>
+            <dict><key>SKAdNetworkIdentifier</key><string>lpz29hm2ju.skadnetwork</string></dict>
             <dict><key>SKAdNetworkIdentifier</key><string>nu4557a4je.skadnetwork</string></dict>
             <dict><key>SKAdNetworkIdentifier</key><string>z959bm4gru.skadnetwork</string></dict>
 {{/applovin.verve_ios}}

@@ -1,6 +1,6 @@
 # Migrating from 1.x
 
-Version 2.0.0 updates AppLovin MAX from 12.2.0 to 13.6.4.
+The 2.x extension updates AppLovin MAX from 12.2.0 to 13.7.0.
 
 ## 1. Update project requirements
 

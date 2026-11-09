@@ -4,7 +4,7 @@ Native AppLovin MAX extension for Defold on Android and iOS. It supports
 interstitial, rewarded, banner, and MREC ads, along with MAX debugging,
 consent, test-device, custom-event, and revenue APIs.
 
-Version 2.0.0 uses AppLovin MAX 13.6.4 and requires:
+The extension uses AppLovin MAX 13.7.0 and requires:
 
 - Defold 1.13.0 or newer
 - Android API 24 or newer

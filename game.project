@@ -16,7 +16,7 @@ dependencies#0 = https://github.com/AGulev/dirtylarry/archive/2da18ae4785977cfa4
 
 [library]
 include_dirs = extension-applovin
-defold_min_version = 1.13.0
+defold_min_version = 1.13.2
 
 [android]
 package = com.defold.applovin.demo

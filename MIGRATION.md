@@ -4,7 +4,7 @@ The 2.x extension updates AppLovin MAX from 12.2.0 to 13.7.0.
 
 ## 1. Update project requirements
 
-Use Defold 1.13.0 or newer, Android API 24 or newer, and iOS 15 or newer.
+Use Defold 1.13.2 or newer, Android API 24 or newer, and iOS 15 or newer.
 Open `game.project` in the Defold editor and configure:
 
 - **Android > Minimum SDK Version**: `24`

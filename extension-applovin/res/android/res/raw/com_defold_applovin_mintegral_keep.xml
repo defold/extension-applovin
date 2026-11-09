@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Mintegral resolves these resources by name at runtime. Its consumer R-class
+     keep rules do not retain unread resources with R8 9.5 resource shrinking. -->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@anim/mbridge*,@attr/mbridge*,@color/mbridge*,@dimen/mbridge*,@drawable/mbridge*,@id/mbridge*,@layout/mbridge*,@string/mbridge*,@style/mbridge*" />

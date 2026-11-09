@@ -334,7 +334,7 @@ class PackagingContractTests(unittest.TestCase):
             r"applovin\.initialize\(SDK_KEY\)",
         )
         self.assertRegex(
-            project, r"(?m)^defold_min_version\s*=\s*1\.13\.0\s*$"
+            project, r"(?m)^defold_min_version\s*=\s*1\.13\.2\s*$"
         )
         android = self.catalog["android"]
         self.assertRegex(
@@ -693,11 +693,11 @@ class PackagingContractTests(unittest.TestCase):
         self.assertIn("unittest discover -s tests -v", workflow)
         self.assertIn("needs: verify", workflow)
         self.assertIn(
-            "8f2b1381fd4d0fb92816403cd0056cb7db5ad4083615be8dcc2d868fb4939938",
+            "d8cbe667757ca1c5f4dfd251bc98660c35e7a65ac84bf0207ccef7607de6d1a1",
             workflow,
         )
         self.assertIn(
-            "22e651025834603794ba6873b09924f11412dff66eee0e38aaef8955eb534655",
+            "79f60022a80c52bbb88a1ec7ad44d7771a70cec658e3950c8f0134554078e9d0",
             workflow,
         )
         self.assertIn("https://build.defold.com", workflow)

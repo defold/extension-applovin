@@ -5,7 +5,7 @@ This document is for extension maintainers. Extension users should read the
 
 ## Prerequisites
 
-- Defold 1.13.0 or newer
+- Defold 1.13.2 or newer
 - a compatible `bob.jar` in the repository root
 - Java supported by that Bob release
 - Python 3
@@ -55,7 +55,7 @@ Keep release dependencies pinned to exact versions.
 
 The example disables all optional mediation adapters on Android and iOS
 and enables R8 on Android. To build the Android example, use Defold
-1.13.2 beta with staging Extender:
+1.13.2 or newer:
 
 ```sh
 java -jar bob.jar \
@@ -65,7 +65,7 @@ java -jar bob.jar \
   --variant debug \
   --with-symbols \
   --bundle-format apk \
-  --build-server https://build-stage.defold.com \
+  --build-server https://build.defold.com \
   --bundle-output dist/android-r8 \
   resolve build bundle
 ```
@@ -81,6 +81,16 @@ LevelPlay integration. Moloco guards this integration with class lookups and
 exception handling, but its consumer rules omit
 `com.unity3d.mediation.LevelPlay` and
 `com.unity3d.mediation.impression.LevelPlayImpressionDataListener`.
+
+Android resource keep XML lives in
+`extension-applovin/res/android/res/raw/`. Bob automatically collects this
+directory as Android resources for the native build. These files preserve
+Mintegral resources resolved by name, AppLovin mediation-debugger icons, and
+AppLovin consent strings. They are separate from the Java keep rules: R8 9.5
+can remove resources whose kept `R` fields are never read. Keep the XML
+filenames unique across extensions, and keep patterns scoped to SDK resources.
+Do not put these files in `project.custom_resources`, which packages files
+in the Defold game archive rather than the Android resource table.
 
 The keep-file setting enables shrinking, optimization, and obfuscation independently
 of the native engine variant. The debug variant allows the example's demo
@@ -161,8 +171,8 @@ behavior on physical devices before release.
 
 ## iOS smoke test
 
-For an Apple Silicon simulator, use Bob from Defold 1.13.2 beta or newer
-with the `arm64_sim-ios` target. When testing the beta, use staging Extender:
+For an Apple Silicon simulator, use Bob from Defold 1.13.2 or newer
+with the `arm64_sim-ios` target:
 
 ```sh
 java -jar bob.jar \
@@ -170,7 +180,7 @@ java -jar bob.jar \
   --platform arm64_sim-ios \
   --architectures arm64_sim-ios \
   --variant debug \
-  --build-server https://build-stage.defold.com \
+  --build-server https://build.defold.com \
   --bundle-output dist/ios-simulator \
   resolve build bundle
 

@@ -33,12 +33,12 @@ jobs:
       matrix:
         include:
           - name: current
-            bob_url: https://github.com/defold/defold/releases/download/1.13.1/bob.jar
-            bob_sha256: 8f2b1381fd4d0fb92816403cd0056cb7db5ad4083615be8dcc2d868fb4939938
+            bob_url: https://github.com/defold/defold/releases/download/1.14.0/bob.jar
+            bob_sha256: d8cbe667757ca1c5f4dfd251bc98660c35e7a65ac84bf0207ccef7607de6d1a1
             build_server: https://build.defold.com
-          - name: Defold-1.13.0-minimum
-            bob_url: https://github.com/defold/defold/releases/download/1.13.0/bob.jar
-            bob_sha256: 22e651025834603794ba6873b09924f11412dff66eee0e38aaef8955eb534655
+          - name: Defold-1.13.2-minimum
+            bob_url: https://github.com/defold/defold/releases/download/1.13.2/bob.jar
+            bob_sha256: 79f60022a80c52bbb88a1ec7ad44d7771a70cec658e3950c8f0134554078e9d0
             build_server: https://build.defold.com
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -88,8 +88,8 @@ jobs:
     needs: verify
     runs-on: macos-latest
     env:
-      BOB_JAR_URL: https://github.com/defold/defold/releases/download/1.13.1/bob.jar
-      BOB_JAR_SHA256: 8f2b1381fd4d0fb92816403cd0056cb7db5ad4083615be8dcc2d868fb4939938
+      BOB_JAR_URL: https://github.com/defold/defold/releases/download/1.14.0/bob.jar
+      BOB_JAR_SHA256: d8cbe667757ca1c5f4dfd251bc98660c35e7a65ac84bf0207ccef7607de6d1a1
       BUILD_SERVER: https://build.defold.com
     steps:
       # The upstream reusable workflow exposes neither a Bob checksum input

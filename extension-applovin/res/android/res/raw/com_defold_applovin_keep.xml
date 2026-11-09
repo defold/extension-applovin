@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- AppLovin looks up mediation icons and consent strings by name at runtime.
+     Java/R-class keep rules do not preserve unread resources with R8 9.5. -->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/applovin_ic_mediation_*,@string/applovin_*" />

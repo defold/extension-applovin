@@ -6,7 +6,7 @@ consent, test-device, custom-event, and revenue APIs.
 
 The extension uses AppLovin MAX 13.7.0 and requires:
 
-- Defold 1.13.0 or newer
+- Defold 1.13.2 or newer
 - Android API 24 or newer
 - iOS 15.0 or newer
 
@@ -77,9 +77,8 @@ and can open the Mediation Debugger; release builds do not pass the demo key to
 MAX. Add your own ad-unit IDs to test ad formats.
 
 The example disables all optional mediation adapters on Android and iOS.
-Android builds enable R8 using Defold 1.13.2 beta. See the
-[build instructions](DEVELOPMENT.md#build-with-bob) for the staging Extender
-command.
+Android builds enable R8 using Defold 1.13.2 or newer. See the
+[build instructions](DEVELOPMENT.md#build-with-bob).
 
 ## Documentation
 
